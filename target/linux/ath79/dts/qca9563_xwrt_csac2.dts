@@ -3,7 +3,6 @@
 
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/input.h>
-#include <dt-bindings/mtd/partitions/uimage.h>
 
 #include "qca956x.dtsi"
 
@@ -109,7 +108,7 @@
 
 			partition@60000 {
 				compatible = "openwrt,uimage", "denx,uimage";
-				openwrt,ih-magic = <IH_MAGIC_OKLI>;
+				openwrt,ih-magic = <0x4f4b4c49>;
 				label = "firmware";
 				reg = <0x060000 0xe20000>;
 			};
