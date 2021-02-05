@@ -1566,7 +1566,7 @@ define Device/yuncore_a770
   IMAGE_SIZE := 16000k
   IMAGES += tftp.bin
   IMAGE/tftp.bin := $$(IMAGE/sysupgrade.bin) | yuncore-tftp-header-16m
-	endef
+endef
 TARGET_DEVICES += yuncore_a770
 
 define Device/yuncore_a782
