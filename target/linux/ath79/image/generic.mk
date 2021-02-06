@@ -1339,6 +1339,17 @@ define Device/phicomm_k2t
 endef
 TARGET_DEVICES += phicomm_k2t
 
+define Device/xwrt_csac2
+  SOC := qca9563
+  DEVICE_VENDOR := XWRT
+  DEVICE_MODEL := CSAC2
+  IMAGE_SIZE := 14464k
+  IMAGE/sysupgrade.bin := append-kernel | append-rootfs | pad-rootfs | \
+	append-metadata | check-size
+  DEVICE_PACKAGES := kmod-leds-reset kmod-ath10k-ct ath10k-firmware-qca9888-ct
+endef
+TARGET_DEVICES += xwrt_csac2
+
 define Device/pisen_ts-d084
   $(Device/tplink-8mlzma)
   SOC := ar9331
@@ -1536,19 +1547,6 @@ define Device/winchannel_wb2000
 	kmod-usb-ledtrig-usbport
 endef
 TARGET_DEVICES += winchannel_wb2000
-
-define Device/xwrt_csac2
-  SOC := qca9563
-  DEVICE_VENDOR := XWRT
-  DEVICE_MODEL := CSAC2
-  IMAGE_SIZE := 14464k
-  LOADER_TYPE := bin
-  LOADER_FLASH_OFFS := 0x60000
-  IMAGE/breed-factory.bin := append-kernel | pad-to $$$$(BLOCKSIZE) | append-rootfs | pad-rootfs | \
-			     prepad-okli-kernel $(1) | pad-to 14528k | append-okli-kernel $(1)
-  DEVICE_PACKAGES := kmod-leds-reset kmod-ath10k-ct ath10k-firmware-qca9888-ct
-endef
-TARGET_DEVICES += xwrt_csac2
 
 define Device/xiaomi_mi-router-4q
   SOC := qca9561
